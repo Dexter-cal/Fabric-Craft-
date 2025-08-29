@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://d5e4f3g2h1i0"]
+
+[node name="PostCard" type="PanelContainer"]
+custom_minimum_size = Vector2(400, 600)
+# This is a template for a single post in the community feed.
+# It will be instantiated by CommunityFeed.gd.
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PostThumbnail" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+expand_mode = 1
+# Placeholder for the post's image or video thumbnail.
+
+[node name="InteractionBar" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+# Container for like, comment, share buttons.
+
+[node name="LikeButton" type="Button" parent="VBoxContainer/InteractionBar"]
+layout_mode = 2
+text = "Like"
+
+[node name="CommentButton" type="Button" parent="VBoxContainer/InteractionBar"]
+layout_mode = 2
+text = "Comment"
+
+[node name="CreatorLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Creator Name"
+
+[node name="AITrendingBadge" type="Label" parent="."]
+visible = false # Hidden by default
+layout_mode = 2
+text = "🔥 AI Pick"
+# This badge is shown if the post is identified as trending by the AI.
+# A script attached to this scene would handle setting the data.
+# e.g., a function like set_post_data(data)
+# [script]
+# extends PanelContainer
+# func set_post_data(data):
+#   $VBoxContainer/CreatorLabel.text = data.creator
+#   $AITrendingBadge.visible = data.is_trending
+# [/script]
