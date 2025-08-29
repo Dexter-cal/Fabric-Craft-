@@ -15,6 +15,7 @@ text = "Select"
 
 [node name="DrawButton" type="Button" parent="."]
 layout_mode = 2
+toggle_mode = true
 text = "Draw"
 
 [node name="CutButton" type="Button" parent="."]

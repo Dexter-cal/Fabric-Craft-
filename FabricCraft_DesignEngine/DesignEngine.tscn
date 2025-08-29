@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://design_engine_main_scene"]
+
+[ext_resource type="Script" path="res://DesignEngine.gd" id="1_engine"]
+[ext_resource type="PackedScene" uid="uid://toolbar_scene" path="res://UI/Toolbar.tscn" id="2_toolbar"]
+[ext_resource type="PackedScene" uid="uid://layers_panel_scene" path="res://UI/LayersPanel.tscn" id="3_layers"]
+[ext_resource type="PackedScene" uid="uid://preview_panel_scene" path="res://UI/PreviewPanel.tscn" id="4_preview"]
+
+[node name="DesignEngine" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_engine")
+
+[node name="MainLayout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Toolbar" parent="MainLayout" instance=ExtResource("2_toolbar")]
+layout_mode = 2
+
+[node name="WorkspaceLayout" type="HBoxContainer" parent="MainLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LayersPanel" parent="WorkspaceLayout" instance=ExtResource("3_layers")]
+layout_mode = 2
+
+[node name="PreviewPanel" parent="WorkspaceLayout" instance=ExtResource("4_preview")]
+layout_mode = 2
+size_flags_horizontal = 3
