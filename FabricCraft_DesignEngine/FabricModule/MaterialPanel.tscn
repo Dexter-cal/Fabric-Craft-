@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://material_panel_scene"]
+
+[ext_resource type="Script" path="res://FabricModule/MaterialPanel.gd" id="1_matpanel"]
+
+[node name="MaterialPanel" type="PanelContainer"]
+script = ExtResource("1_matpanel")
+
+# --- Fabric & Material Selection Panel ---
+# This UI panel allows users to select and customize materials.
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Fabric Properties"
+
+[node name="GlossSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = 0.0
+max_value = 1.0
+step = 0.01
+
+[node name="TransparencySlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = 0.0
+max_value = 1.0
+step = 0.01

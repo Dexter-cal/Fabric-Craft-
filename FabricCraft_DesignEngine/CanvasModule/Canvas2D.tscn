@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://canvas2d_scene"]
+
+[ext_resource type="Script" path="res://CanvasModule/Canvas2D.gd" id="1_canvas"]
+
+[node name="Canvas2D" type="Node2D"]
+script = ExtResource("1_canvas")
+
+# --- 2D Design Canvas ---
+# This is the main workspace for 2D pattern design.
+# It will handle drawing, cutting, and stitching simulation.
+
+[node name="DrawingLayer" type="Node2D" parent="."]
+# For freehand, lines, and shapes.
+
+[node name="GridOverlay" type="GridContainer" parent="."]
+visible = false
+# For snapping and alignment.

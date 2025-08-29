@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://avatar_preview_scene"]
+
+[ext_resource type="Script" path="res://Preview3D/Avatar.gd" id="1_avatar"]
+
+[node name="Avatar" type="Node3D"]
+script = ExtResource("1_avatar")
+
+# This node will hold the rigged 3D avatar/mannequin.
+# It will have a Skeleton3D node and various MeshInstance3D nodes.
+
+[node name="Skeleton3D" type="Skeleton3D" parent="."]
