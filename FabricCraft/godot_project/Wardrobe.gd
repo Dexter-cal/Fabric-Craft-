@@ -1,47 +1,53 @@
 extends Node3D
 
 # --- Wardrobe Interaction Script ---
-# This script handles all interactions within the Wardrobe.tscn scene.
+# Handles avatar and clothing swapping logic.
 
-# References to key nodes (to be assigned in the editor)
-@onready var avatar = $AvatarNode # Placeholder for the avatar model
-@onready var clothing_container = $ClothingContainer # Node containing clothing items
-@onready var ui_panel = $UIPanel # Control panel for user
+# --- Preload Assets ---
+# Preload the scenes for the avatar and clothing items.
+const AvatarPlaceholder = preload("res://assets/avatars/avatar_placeholder.tscn")
+const ShirtPlaceholder = preload("res://assets/clothes/shirt_placeholder.tscn")
+const PantsPlaceholder = preload("res://assets/clothes/pants_placeholder.tscn")
+
+# --- Node References ---
+# Get references to nodes from the scene tree.
+@onready var avatar_container = $AvatarContainer
+@onready var equip_shirt_button = $UI/ClothingButtons/EquipShirtButton
+@onready var equip_pants_button = $UI/ClothingButtons/EquipPantsButton
+
+var current_avatar = null
 
 # --- Core Functions ---
 
 func _ready():
-	# Initial setup
+	# This function is called when the node enters the scene tree.
 	print("Wardrobe scene is ready.")
-	# TODO: Load the default avatar and available clothing items.
-	# TODO: Connect UI signals (e.g., buttons for next/previous item).
+
+	# Instantiate the avatar and add it to the scene.
+	current_avatar = AvatarPlaceholder.instantiate()
+	avatar_container.add_child(current_avatar)
+
+	# Connect the UI button signals to the equip function.
+	# We use bind() to pass the specific clothing scene as an argument.
+	equip_shirt_button.pressed.connect(equip_item.bind(ShirtPlaceholder))
+	equip_pants_button.pressed.connect(equip_item.bind(PantsPlaceholder))
 	pass
 
 # --- Avatar & Clothing Logic ---
 
-func _swap_clothing_item(item_id):
-	# TODO: Logic to unequip the current item and equip the new one.
-	# This would involve changing meshes/scenes on the avatar's skeleton.
-	print("Swapping to item: ", item_id)
-	pass
+func equip_item(item_scene: PackedScene):
+	# This function equips a new item to the avatar.
+	if not current_avatar:
+		print("Avatar not loaded yet.")
+		return
 
-func _change_avatar_pose(pose_animation):
-	# TODO: Trigger a new animation in the avatar's AnimationPlayer.
-	print("Changing pose to: ", pose_animation)
-	pass
+	# First, remove any existing items of the same type (a real system would be more complex).
+	# For this placeholder, we'll just clear all children (all clothes).
+	for child in current_avatar.get_children():
+		child.queue_free()
 
-func _save_current_outfit():
-	# TODO: Logic to serialize the current clothing combination.
-	# Save it to user data (e.g., a local file or send to backend).
-	print("Saving outfit...")
-	pass
-
-# --- Signal Handlers ---
-
-func _on_try_on_button_pressed(item_id):
-	_swap_clothing_item(item_id)
-	pass
-
-func _on_save_outfit_button_pressed():
-	_save_current_outfit()
+	# Instantiate the new clothing item and add it as a child of the avatar.
+	var new_item = item_scene.instantiate()
+	current_avatar.add_child(new_item)
+	print("Equipped item: ", new_item.name)
 	pass
