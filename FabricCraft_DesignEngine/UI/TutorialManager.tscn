@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://tutorial_manager_scene"]
+
+[ext_resource type="Script" path="res://UI/TutorialManager.gd" id="1_tutorial"]
+
+[node name="TutorialManager" type="CanvasLayer"]
+script = ExtResource("1_tutorial")
+
+# --- Interactive Tutorial Overlay ---
+# This layer sits on top of the main UI to guide the user.
+
+[node name="HighlightRect" type="Panel" parent="."]
+# This panel will be moved and resized programmatically
+# to highlight different UI elements.
+# A custom stylebox can make it look like a glowing border.
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2 # Ignore mouse input
+
+[node name="InfoBox" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="InstructionLabel" type="RichTextLabel" parent="InfoBox"]
+layout_mode = 2
+text = "Welcome to the Fabric Craft Design Engine! Click here to continue..."
+fit_content = true
+
+[node name="NextButton" type="Button" parent="InfoBox"]
+layout_mode = 2
+text = "Next"

@@ -18,6 +18,11 @@ layout_mode = 2
 toggle_mode = true
 text = "Draw"
 
+[node name="ColorPicker" type="ColorPickerButton" parent="."]
+layout_mode = 2
+custom_minimum_size = Vector2(40, 0)
+color = Color(1, 1, 1, 1)
+
 [node name="CutButton" type="Button" parent="."]
 layout_mode = 2
 text = "Cut"
@@ -25,3 +30,10 @@ text = "Cut"
 [node name="AISuggestButton" type="Button" parent="."]
 layout_mode = 2
 text = "AI Suggest"
+
+[node name="VSeparator" type="VSeparator" parent="."]
+layout_mode = 2
+
+[node name="StartTutorialButton" type="Button" parent="."]
+layout_mode = 2
+text = "Start Tutorial"

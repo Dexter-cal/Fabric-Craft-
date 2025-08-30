@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://toolbar_scene" path="res://UI/Toolbar.tscn" id="2_toolbar"]
 [ext_resource type="PackedScene" uid="uid://layers_panel_scene" path="res://UI/LayersPanel.tscn" id="3_layers"]
 [ext_resource type="PackedScene" uid="uid://preview_panel_scene" path="res://UI/PreviewPanel.tscn" id="4_preview"]
+[ext_resource type="PackedScene" uid="uid://tutorial_manager_scene" path="res://UI/TutorialManager.tscn" id="5_tutorial"]
+[ext_resource type="PackedScene" uid="uid://material_panel_scene" path="res://FabricModule/MaterialPanel.tscn" id="6_material"]
 
 [node name="DesignEngine" type="Control"]
 layout_mode = 3
@@ -29,9 +31,17 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="LayersPanel" parent="WorkspaceLayout" instance=ExtResource("3_layers")]
+[node name="LeftPanel" type="VBoxContainer" parent="WorkspaceLayout"]
+layout_mode = 2
+
+[node name="LayersPanel" parent="LeftPanel" instance=ExtResource("3_layers")]
+layout_mode = 2
+
+[node name="MaterialPanel" parent="LeftPanel" instance=ExtResource("6_material")]
 layout_mode = 2
 
 [node name="PreviewPanel" parent="WorkspaceLayout" instance=ExtResource("4_preview")]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="TutorialManager" parent="." instance=ExtResource("5_tutorial")]
