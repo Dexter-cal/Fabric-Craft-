@@ -8,6 +8,7 @@ const marketplaceRoutes = require('./endpoints/marketplace');
 const communityRoutes = require('./endpoints/community');
 const adminRoutes = require('./endpoints/admin');
 const socialRoutes = require('./endpoints/social');
+const authRoutes = require('./endpoints/auth');
 
 // --- App Initialization ---
 const app = express();
@@ -27,6 +28,7 @@ app.use('/api/marketplace', marketplaceRoutes);
 app.use('/api/community', communityRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/social', socialRoutes);
+app.use('/api/auth', authRoutes);
 
 // --- Server Start ---
 app.listen(PORT, () => {
