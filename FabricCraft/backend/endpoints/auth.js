@@ -18,7 +18,12 @@ router.post('/register', (req, res) => {
   }
 
   // NOTE: In a real app, NEVER store plain text passwords. Always hash them.
-  const newUser = { id: users.length + 1, username, email, password };
+  let role = "user";
+  if (email === "admin@fabric.craft") {
+    role = "admin";
+  }
+
+  const newUser = { id: users.length + 1, username, email, password, role };
   users.push(newUser);
 
   console.log('User registered:', newUser);
@@ -40,7 +45,12 @@ router.post('/login', (req, res) => {
   }
 
   console.log('User logged in:', user);
-  res.status(200).json({ message: 'Login successful.', userId: user.id, username: user.username });
+  res.status(200).json({
+    message: 'Login successful.',
+    userId: user.id,
+    username: user.username,
+    role: user.role // Return the user's role
+  });
 });
 
 module.exports = router;

@@ -44,5 +44,8 @@ func _on_request_completed(result, response_code, headers, body):
 	# Wait for a moment so the user can see the success message.
 	await get_tree().create_timer(1.0).timeout
 
-	# Change to the User Dashboard scene.
-	get_tree().change_scene_to_file("res://Accounts/UserDashboard/UserDashboard.tscn")
+	# Redirect based on user role
+	if response.get("role") == "admin":
+		get_tree().change_scene_to_file("res://Accounts/AdminDashboard/AdminDashboard.tscn")
+	else:
+		get_tree().change_scene_to_file("res://Accounts/UserDashboard/UserDashboard.tscn")
