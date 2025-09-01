@@ -20,14 +20,9 @@ func _on_login_button_pressed():
 		status_label.text = "Please enter email and password."
 		return
 
-	# Construct the request body
-	var body = {
-		"email": email,
-		"password": password
-	}
+	var body = { "email": email, "password": password }
 	var body_json = JSON.stringify(body)
 
-	# Set up and make the request
 	var headers = ["Content-Type: application/json"]
 	var error = http_request.request("http://localhost:3000/api/auth/login", headers, HTTPClient.METHOD_POST, body_json)
 
@@ -45,7 +40,9 @@ func _on_request_completed(result, response_code, headers, body):
 		return
 
 	status_label.text = "Login successful! Welcome, " + response.get("username", "") + "!"
-	# Here you would typically save the user token/session and change to the main app scene
-	# For example:
-	# UserSession.auth_token = response.get("token")
-	# get_tree().change_scene_to_file("res://Hub.tscn")
+
+	# Wait for a moment so the user can see the success message.
+	await get_tree().create_timer(1.0).timeout
+
+	# Change to the User Dashboard scene.
+	get_tree().change_scene_to_file("res://Accounts/UserDashboard/UserDashboard.tscn")

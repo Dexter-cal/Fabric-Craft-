@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://accessories_scene"]
-
-[node name="Accessory" type="Node3D"]
-
-# --- Placeholder for a Generic 3D Accessory Model ---
-# e.g., hats, bags, jewelry.
-
-[node name="AccessoryMesh" type="MeshInstance3D" parent="."]
-# Mesh for the accessory.

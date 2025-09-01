@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://avatar_placeholder"]
-
-[node name="Avatar" type="Node3D"]
-# This is a placeholder for a 3D avatar model.
-# In a real project, this would be a .gltf or .obj import.

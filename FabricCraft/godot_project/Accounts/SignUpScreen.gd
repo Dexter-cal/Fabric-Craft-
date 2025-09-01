@@ -22,7 +22,6 @@ func _on_register_button_pressed():
 		status_label.text = "Please fill in all fields."
 		return
 
-	# Construct the request body
 	var body = {
 		"username": username,
 		"email": email,
@@ -30,7 +29,6 @@ func _on_register_button_pressed():
 	}
 	var body_json = JSON.stringify(body)
 
-	# Set up and make the request
 	var headers = ["Content-Type: application/json"]
 	var error = http_request.request("http://localhost:3000/api/auth/register", headers, HTTPClient.METHOD_POST, body_json)
 
@@ -48,5 +46,3 @@ func _on_request_completed(result, response_code, headers, body):
 		return
 
 	status_label.text = "Registration successful! You can now log in."
-	# Here you would typically switch to the login screen
-	# get_tree().change_scene_to_file("res://Accounts/LoginScreen.tscn")
