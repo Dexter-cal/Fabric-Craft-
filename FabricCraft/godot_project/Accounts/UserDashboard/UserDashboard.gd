@@ -1,12 +1,12 @@
 extends Control
 
-# --- User Dashboard Logic ---
-
 @onready var header_label = $VBoxContainer/HeaderLabel
+@onready var open_engine_button = $VBoxContainer/OpenDesignEngineButton
 
 func _ready():
-	# In a real app, user data would be fetched from a global session manager.
-	# For now, we'll just use a placeholder name.
-	# e.g., header_label.text = "Welcome, " + UserSession.username
-	header_label.text = "Welcome, User!"
-	print("User Dashboard loaded.")
+	# In a real app, this data would come from a global session manager.
+	header_label.text = "Welcome to your Dashboard!"
+	open_engine_button.pressed.connect(_on_open_design_engine_pressed)
+
+func _on_open_design_engine_pressed():
+	get_tree().change_scene_to_file("res://DesignEngine/DesignEngine.tscn")
