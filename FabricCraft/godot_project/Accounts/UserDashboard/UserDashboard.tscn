@@ -29,3 +29,7 @@ horizontal_alignment = 1
 [node name="OpenDesignEngineButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Open Design Engine"
+
+[node name="GoToMarketplaceButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Go to Marketplace"
