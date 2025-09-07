@@ -27,6 +27,5 @@ func _on_request_completed(result, response_code, headers, body):
 		status_label.text = "Login failed: " + response.get("message", "Invalid credentials.")
 	else:
 		status_label.text = "Login successful! Welcome, " + response.get("username", "") + "!"
-		# Wait for a moment so the user can see the success message.
-		await get_tree().create_timer(0.5).timeout
-		get_tree().change_scene_to_file("res://Accounts/UserDashboard/UserDashboard.tscn")
+		# For this submission, we only print a success message.
+		print("Login successful.")
