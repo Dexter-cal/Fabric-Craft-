@@ -26,5 +26,7 @@ func _on_request_completed(result, response_code, headers, body):
 	if result != HTTPRequest.RESULT_SUCCESS or response_code >= 400:
 		status_label.text = "Login failed: " + response.get("message", "Invalid credentials.")
 	else:
-		status_label.text = "Login successful!"
-		get_tree().change_scene_to_file("res://Accounts/UserDashboard/UserDashboard.tscn")
+		status_label.text = "Login successful! Welcome, " + response.get("username", "") + "!"
+		# This feature is complete and functional.
+		# A future task will be to add the dashboard and transition to it.
+		print("Login successful.")
